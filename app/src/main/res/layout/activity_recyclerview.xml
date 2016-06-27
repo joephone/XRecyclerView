@@ -7,7 +7,10 @@
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        />
 
     <TextView
         android:gravity="center"

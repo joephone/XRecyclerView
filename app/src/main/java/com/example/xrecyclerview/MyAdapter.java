@@ -19,7 +19,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     //创建新View，被LayoutManager所调用
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.image_item,viewGroup,false);
         return new ViewHolder(view);
     }
     //将数据与界面进行绑定的操作

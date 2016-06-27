@@ -27,7 +27,7 @@ public class GridActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
         mRecyclerView = (XRecyclerView)this.findViewById(R.id.recyclerview);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,3);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2);        //第二个参数控制显示数量
 
         mRecyclerView.setLayoutManager(layoutManager);
 
@@ -35,8 +35,8 @@ public class GridActivity extends AppCompatActivity {
         mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
 
-        View header =   LayoutInflater.from(this).inflate(R.layout.recyclerview_header, (ViewGroup)findViewById(android.R.id.content),false);
-        mRecyclerView.addHeaderView(header);
+//        View header =   LayoutInflater.from(this).inflate(R.layout.recyclerview_header, (ViewGroup)findViewById(android.R.id.content),false);
+//        mRecyclerView.addHeaderView(header);
 
         mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
