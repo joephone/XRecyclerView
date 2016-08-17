@@ -32,6 +32,11 @@
             android:name=".EmptyViewActivity"
             android:label="@string/app_name" >
         </activity>
+
+        <activity
+            android:name=".NoFreshLinearActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

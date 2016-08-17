@@ -33,4 +33,14 @@
         android:text="emptyViewSupport"
         />
 
+    <Button
+        android:onClick="gotoNoFreshActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:text="NoFresh"
+        />
+
+
+
 </LinearLayout>

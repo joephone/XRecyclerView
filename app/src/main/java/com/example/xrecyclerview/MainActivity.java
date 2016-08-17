@@ -34,4 +34,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void gotoNoFreshActivity(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, NoFreshLinearActivity.class);
+        startActivity(intent);
+    }
+
+
 }
