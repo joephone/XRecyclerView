@@ -41,6 +41,21 @@
         android:text="NoFresh"
         />
 
+    <Button
+        android:onClick="gotoMoguActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:text="Mogu"
+        />
 
+
+    <Button
+        android:onClick="gotoMugooAct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:text="MugooAct"
+        />
 
 </LinearLayout>

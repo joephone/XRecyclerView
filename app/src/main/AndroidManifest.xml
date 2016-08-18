@@ -37,6 +37,19 @@
             android:name=".NoFreshLinearActivity"
             android:label="@string/app_name" >
         </activity>
+
+        <activity
+            android:name=".mogu.MoguAct"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name=".mugoo.MugooAct"
+            android:label="@string/app_name" >
+        </activity>
+
+
+
     </application>
 
 </manifest>

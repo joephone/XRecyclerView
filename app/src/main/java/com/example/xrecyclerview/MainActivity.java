@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.xrecyclerview.mogu.MoguAct;
+import com.example.xrecyclerview.mugoo.MugooAct;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -40,5 +43,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void gotoMoguActivity(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, MoguAct.class);
+        startActivity(intent);
+    }
+
+    public void gotoMugooAct(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, MugooAct.class);
+        startActivity(intent);
+    }
 
 }

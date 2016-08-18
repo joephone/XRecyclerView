@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="id_top_banner" type="id"/>
+    <item name="id_horizontalview" type="id"/>
+    <item name="id_horizontalmenu" type="id"/>
+    <item name="id_viewpager" type="id"/>
+    <item name="id_listview" type="id"/>
+</resources>
