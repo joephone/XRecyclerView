@@ -1,6 +1,7 @@
 package com.example.xrecyclerview.mugoo;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -28,6 +29,7 @@ public class MoguLayout extends LinearLayout{
     private View horizontalScrollView;
     private AutoHorizontalScrollView menu;
     private ViewPager viewPager;
+    private View layTab;
 //    private ListView listView;
 
     private OverScroller scroller;
@@ -37,6 +39,37 @@ public class MoguLayout extends LinearLayout{
 
     private int distanceFromViewPagerToX;
     private float mLastY;
+
+    private Event onScrollListener;
+    /**
+     * 主要是用在用户手指离开MyScrollView，MyScrollView还在继续滑动，我们用来保存Y的距离，然后做比较
+     */
+    private int lastScrollY;
+    /**
+     * 设置滚动接口
+     * @param onScrollListener
+     */
+    public void setOnScrollListener(Event onScrollListener){
+        this.onScrollListener = onScrollListener;
+    }
+
+    private Handler handler = new Handler() {
+
+        public void handleMessage(android.os.Message msg) {
+            int scrollY = scroller.getCurrY();
+
+            //此时的距离和记录下的距离不相等，在隔5毫秒给handler发送消息
+            if(lastScrollY != scrollY){
+                lastScrollY = scrollY;
+                handler.sendMessageDelayed(handler.obtainMessage(), 5);
+            }
+            if(onScrollListener != null){
+                onScrollListener.show(scrollY);
+            }
+
+        };
+
+    };
 
     private boolean mDragging;
     private boolean isInControl = false;
@@ -59,6 +92,7 @@ public class MoguLayout extends LinearLayout{
         horizontalScrollView = findViewById(R.id.id_horizontalview);
         viewPager = (ViewPager)findViewById(R.id.id_viewpager);
         menu = (AutoHorizontalScrollView)findViewById(R.id.id_horizontalmenu);
+        layTab = findViewById(R.id.layTab);
     }
 
     @Override
@@ -77,6 +111,9 @@ public class MoguLayout extends LinearLayout{
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if(onScrollListener != null){
+            onScrollListener.show(lastScrollY = this.getScrollY());
+        }
         initVelocityTrackerIfNotExists();
         mVelocityTracker.addMovement(event);
         int action = event.getAction();
@@ -100,6 +137,8 @@ public class MoguLayout extends LinearLayout{
 
                     // 如果topView隐藏，且上滑动时，则改变当前事件为ACTION_DOWN
                     if (getScrollY() == distanceFromViewPagerToX && dy < 0) {
+
+
                         event.setAction(MotionEvent.ACTION_DOWN);
                         dispatchTouchEvent(event);
                         isInControl = false;
@@ -267,6 +306,15 @@ public class MoguLayout extends LinearLayout{
             mVelocityTracker.recycle();
             mVelocityTracker = null;
         }
+    }
+
+
+    /**
+     * 滚动的回调接口
+     */
+    public interface Event{
+
+        public void show(int scrollY);
     }
 
 }

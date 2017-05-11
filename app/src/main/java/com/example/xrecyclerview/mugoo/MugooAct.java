@@ -24,7 +24,7 @@ import com.example.xrecyclerview.view.AutoHorizontalScrollView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MugooAct extends AppCompatActivity {
+public class MugooAct extends AppCompatActivity implements MoguLayout.Event{
     private static final int NUM_FRAGMENT = 10;
 
 
@@ -32,7 +32,8 @@ public class MugooAct extends AppCompatActivity {
     private LinearLayout typeLayouts;
     private ViewPager viewPager;
     private AutoHorizontalScrollView menu;
-
+    private LinearLayout layTab,layMid;
+    private MoguLayout mogu;
 
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
@@ -53,6 +54,10 @@ public class MugooAct extends AppCompatActivity {
         menu = (AutoHorizontalScrollView)findViewById(R.id.id_horizontalmenu);
         tabLayouts = (LinearLayout)findViewById(R.id.tab_layout);
         typeLayouts = (LinearLayout)findViewById(R.id.id_horizontalview_layout);
+        layTab = (LinearLayout)findViewById(R.id.layTab);
+        layMid = (LinearLayout)findViewById(R.id.layMid);
+        mogu = (MoguLayout)findViewById(R.id.mogu);
+        mogu.setOnScrollListener(this);
 
         initFragments();
         initView();
@@ -183,4 +188,19 @@ public class MugooAct extends AppCompatActivity {
         return  (int) (padding_in_dp * scale + 0.5f);
     }
 
+    @Override
+    public void show(int scrollY) {
+        if (scrollY >= 900) {
+            if (menu.getParent() != layTab) {
+                layMid.removeView(menu);
+                layTab.addView(menu);
+            }
+        } else {
+            if (menu.getParent() != layMid) {
+                layTab.removeView(menu);
+                layMid.addView(menu);
+            }
+        }
+
+    }
 }

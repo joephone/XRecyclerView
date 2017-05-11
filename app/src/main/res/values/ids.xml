@@ -5,4 +5,6 @@
     <item name="id_horizontalmenu" type="id"/>
     <item name="id_viewpager" type="id"/>
     <item name="id_listview" type="id"/>
+    <item name="layTab" type="id"/>
+    <item name="layMid" type="id"/>
 </resources>

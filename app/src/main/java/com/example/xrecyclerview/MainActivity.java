@@ -43,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void gotoNoLoadActivity(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, NoLoadLinearActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotoSoftKeyBoard(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, SoftKeyBoard.class);
+        startActivity(intent);
+    }
+
     public void gotoMoguActivity(View v) {
         Intent intent = new Intent();
         intent.setClass(this, MoguAct.class);
